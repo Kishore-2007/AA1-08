@@ -1,7 +1,7 @@
- <H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.8</H3>
-<H3>DATE:</H3>
+<H3> Name : Kishore S </H3>
+<H3>Register No : 212224230130 </H3>
+<H3> Experiment 7 </H3>
+<H3>Date : 20-05-2026 </H3>
 <H1 ALIGN =CENTER>Implementation of Speech Recognition</H1>
 <H3>Aim:</H3> 
  To implement the conversion of live speech to text.<BR>
@@ -22,9 +22,29 @@ Step 11: Perform speech recognition with exceptional handling:<Br>
 •	A generic exception block captures any other unexpected errors.<Br>
 <H3>Program:</H3>
 
-Insert your code her
+```python
+import speech_recognition as sr
+def record_audio():
+    r=sr.Recognizer()
+    r.energy_threshold = 6000
+    voicedata=''
+    try:
+        with sr.Microphone() as source:
+            audio=r.listen(source)
+            voicedata=r.recognize_google(audio,language='en-US')            
+    except sr.UnknownValueError:
+        print("Unable to Recognize Audio")
+    except sr.RequestError:
+        print("Unable to find the Resource")
+    return voicedata
+while True:
+	print(record_audio())
+	close=['stop','close','exit']
+	if record_audio() in close:
+		break
+```
 
 <H3> Output:</H3>
-Show the results here
+<img width="1919" height="979" alt="image" src="https://github.com/user-attachments/assets/5d91d679-2b3e-4e82-a4c4-4fa4ba9da4bc" />
 
 <H3> Result:</H3>
